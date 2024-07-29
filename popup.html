@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Popup</title>
+  <style>
+    /* The Modal (background) */
+    .modal {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      overflow: hidden;
+    }
+
+    /* Modal Content */
+    .modal-content {
+      max-width: 90%;
+      max-height: 90%;
+    }
+
+    /* Close Button */
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      color: #f1f1f1;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #bbb;
+    }
+  </style>
+</head>
+<body>
+  <div class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="modalImage" src="">
+  </div>
+
+  <script>
+    // Get the modal and image
+    var modal = document.querySelector(".modal");
+    var modalImg = document.getElementById("modalImage");
+
+    // Extract the image URL from the query string
+    var urlParams = new URLSearchParams(window.location.search);
+    var imgSrc = urlParams.get('img');
+
+    // Set the image source
+    modalImg.src = imgSrc;
+
+    // Get the close button
+    var closeBtn = document.querySelector(".close");
+
+    // Close the modal when the user clicks on <span> (x)
+    closeBtn.onclick = function() {
+      window.location.href = 'index.html';
+    }
+
+    // Close the modal when the user clicks anywhere outside of the modal
+    window.onclick = function(event) {
+      if (event.target === modal) {
+        window.location.href = 'index.html';
+      }
+    }
+  </script>
+</body>
+</html>
